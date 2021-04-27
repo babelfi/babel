@@ -130,7 +130,7 @@ contract PriceFeed is Ownable, CheckContract, BaseMath, IPriceFeed {
         // Get current and previous price data from Chainlink, and current price data from Tellor
         ChainlinkResponse memory chainlinkResponse = _getCurrentChainlinkResponse();
         ChainlinkResponse memory prevChainlinkResponse = _getPrevChainlinkResponse(chainlinkResponse.roundId, chainlinkResponse.decimals);
-        TellorResponse memory tellorResponse = _getCurrentTellorResponse();
+        TellorResponse memory tellorResponse;
 
         // --- CASE 1: System fetched last price from Chainlink  ---
         if (status == Status.chainlinkWorking) {
